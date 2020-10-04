@@ -3,8 +3,6 @@ import { Selector, t } from 'testcafe';
 class HomePage {
     constructor() {
         this.url = "https://devexpress.github.io/testcafe/";
-        // All cards by Xpath
-        this.listCards = Selector("//*[@class = 'feature-container'] /div /p");
         // Cards by cssSelector
         this.firstCard = Selector('.feature.feature-1 > p');
         this.secondCard = Selector('.feature.feature-2 > p');
