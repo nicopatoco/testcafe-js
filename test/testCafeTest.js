@@ -1,4 +1,5 @@
 import home from '../pages/testCafeHome';
+import getStartedPage from '../pages/getStartedPage';
 
 fixture('getting started').page("https://devexpress.github.io/testcafe/");
 
@@ -14,4 +15,8 @@ test('first test', async t => {
         .expect(home.sixthfiCard.innerText).contains('Include tests in continuous', { timeout: 500 });
         
     home.clickOnGetStartedButton();
+
+    await t
+        .expect(getStartedPage.navBar.exists).eql(true)
+        .expect(getStartedPage.activeTab.exists).eql(true);
 })
