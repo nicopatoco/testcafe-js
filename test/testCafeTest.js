@@ -4,7 +4,7 @@ import { ClientFunction } from 'testcafe';
 
 const getStartedUrl = 'https://devexpress.github.io/testcafe/documentation/getting-started/';
 
-fixture('getting started').page("https://devexpress.github.io/testcafe/");
+fixture('getting started').page(home.url);
 
 test('first test', async t => {
     await t
@@ -38,5 +38,18 @@ test('Second test', async t => {
     const getLocation = ClientFunction(() => document.location.href);
 
     await t
-        .expect(getLocation()).contains(getStartedUrl);
+        .expect(getLocation()).eql(getStartedUrl);
+
+    const data = ['Getting Started', 'Guides', 'Reference', 'Recipes', 'How It Works', 'Examples'];
+
+    for (let i = 0; i < 6; i++) {
+        if (i == 0) {
+            await t
+                .expect(getStartedPage.activeTabTitle.innerText).contains(data[i], { timeout: 500 });
+        } else {
+            await t
+                .click(getStartedPage.navBar.nth(i))
+                .expect(getStartedPage.activeTabTitle.innerText).contains(data[i], { timeout: 500 });
+        }
+    }
 });
