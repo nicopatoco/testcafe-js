@@ -28,3 +28,15 @@ test('first test', async t => {
     await t
         .expect(getLocation()).eql(getStartedUrl);
 })
+
+test('Second test', async t => {
+    await t
+        .maximizeWindow();
+
+    home.clickOnGetStartedButton();
+
+    const getLocation = ClientFunction(() => document.location.href);
+
+    await t
+        .expect(getLocation()).contains(getStartedUrl);
+});
