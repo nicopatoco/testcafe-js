@@ -6,7 +6,8 @@ const getStartedUrl = 'https://devexpress.github.io/testcafe/documentation/getti
 
 fixture('getting started').page(home.url);
 
-test('first test', async t => {
+test('In this test should check all the white titles from the cards, ' +
+    'then navigate to get started page in order to validate my current url and navBar', async t => {
     await t
         .maximizeWindow()
         .expect(home.firstCard.innerText).eql('Create stable tests\n(and no manual timeouts)', { timeout: 500 })
@@ -29,7 +30,8 @@ test('first test', async t => {
         .expect(getLocation()).eql(getStartedUrl);
 })
 
-test('Second test', async t => {
+test('In This test should navigate to get started page, then check my current url, ' +
+    'navigate through all the navBar menus and check the titles.', async t => {
     await t
         .maximizeWindow();
 
