@@ -1,4 +1,4 @@
-import { Selector } from 'testcafe';
+import { Selector, t } from 'testcafe';
 
 class HomePage {
     constructor() {
@@ -9,9 +9,15 @@ class HomePage {
         this.secondCard = Selector('.feature.feature-2 > p');
         this.thirdCard = Selector('.feature.feature-3 > p');
         this.fourthCard = Selector('.feature.feature-4 > p');
-        this.fivethCard = Selector('.feature.feature-5 > p');
+        this.fivethCardContainer = Selector('.feature.feature-5');
         this.sixthfiCard = Selector('.feature.feature-6 > p');
         this.buttonGetStarted = Selector('.get-started-button');
+    }
+
+    async clickOnGetStartedButton () {
+        await t
+            .click(this.buttonGetStarted)
+            .wait(3000);
     }
 }
 
